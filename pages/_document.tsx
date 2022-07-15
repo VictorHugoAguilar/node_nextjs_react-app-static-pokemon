@@ -27,10 +27,7 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang="es">
-                <Head>
-                    <title>Pokemon static</title>
-                    {CssBaseline.flush()}
-                </Head>
+                <Head> {CssBaseline.flush()} </Head>
                 <body>
                     <Main />
                     <NextScript />
