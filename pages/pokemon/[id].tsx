@@ -1,21 +1,21 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import { pokeApi } from "../../api";
 import { Layout } from "../../components/layouts";
+import { Pokemon } from "../../interface";
 
 interface Props {
-    // pokemon: any
-    id: string;
-    name: string;
+    pokemon: Pokemon
 }
-const PokemonPage: NextPage<Props> = ({ id, name }) => {
+const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
     const router = useRouter();
 
 
     return (
         <Layout title='algin pokemon'>
-            <h1>{id} - {name}</h1>
+            <div>temporal</div>
         </Layout>
     )
 
@@ -32,12 +32,15 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     }
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+
+    const { id } = params as { id: string };
+    const { data } = await pokeApi.get<Pokemon>(`/pokemon/${id}/`);
+
 
     return {
         props: {
-            id: 1,
-            name: 'buba'
+            pokemon: data
         }
     }
 }
