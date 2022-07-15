@@ -2,9 +2,13 @@ import { Button } from '@nextui-org/react';
 import type { GetStaticProps, NextPage } from 'next';
 import { pokeApi } from '../api';
 import { Layout } from '../components/layouts';
-import { PokemonListResponse } from '../interface';
+import { PokemonListResponse, SmallPokemon } from '../interface';
 
-const HomePage: NextPage = (props) => {
+interface Props {
+  pokemons: SmallPokemon[]
+}
+
+const HomePage: NextPage<Props> = (props) => {
 
   console.log(props)
 
@@ -23,9 +27,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
   console.log(data);
 
+  const pokemons: SmallPokemon[] = data.results.map((poke, i) => ({
+    ...poke,
+    id: i + 1,
+    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`,
+  }));
+
   return {
     props: {
-      pokemons: data.results
+      pokemons
     }
   }
 }
