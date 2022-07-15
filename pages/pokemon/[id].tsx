@@ -21,19 +21,13 @@ const PokemonPage: NextPage<Props> = ({ id, name }) => {
 
 }
 
-
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
+    const pokemon151 = [...Array(151)].map((value, index) => `${index + 1}`);
 
     return {
-        paths: [
-            {
-                params: {
-
-                    id: '1'
-
-                }
-            }
-        ],
+        paths: pokemon151.map(id => ({
+            params: { id }
+        })),
         fallback: false
     }
 }
