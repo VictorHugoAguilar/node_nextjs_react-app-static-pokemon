@@ -1,10 +1,6 @@
 
 const toogleFavorite = (id: number) => {
-
     let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    console.log('favorites saved, ', favorites);
-    console.log('id new, ', id);
 
     if (favorites.includes(id)) {
         favorites = favorites.filter(pokemonId => pokemonId !== id);
@@ -16,7 +12,6 @@ const toogleFavorite = (id: number) => {
 };
 
 const existInFavorites = (id: number): boolean => {
-
     if (typeof window === 'undefined') return false;
 
     let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
