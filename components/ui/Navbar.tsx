@@ -24,16 +24,26 @@ export const Navbar: FC = () => {
             />
             <NextLink href='/' passHref>
                 <Link>
-                    <Text color='white' h2>P</Text>
-                    <Text color='white' h4>okémon</Text>
+                    <Text css={{
+                        textGradient: "45deg, $purple600 -20%, $pink600 100%",
+                    }}
+                        weight="bold" h2>P</Text>
+                    <Text css={{
+                        textGradient: "45deg, $purple600 -20%, $pink600 100%",
+                    }}
+                        weight="bold" h4>okémon</Text>
                 </Link>
             </NextLink>
 
             <Spacer css={{ flex: 1 }} />
 
             <NextLink href='/favorites' passHref>
-                <Link>
-                    <Text color='white' >Favoritos  </Text>
+                <Link block color="secondary">
+                    <Text  css={{
+                        textGradient: "45deg, $purple600 -20%, $pink600 100%",
+                    }}
+                    weight="bold"
+                    h4 >Favoritos  </Text>
                 </Link>
             </NextLink>
         </div>
