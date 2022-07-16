@@ -99,8 +99,8 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-    const pokemon151 = [...Array(151)].map((value, index) => `${index + 1}`);
-
+    const { data } = await proxiApi.get<PokemonListResonse>('/pokemon?limit=151');
+    
     return {
         paths: pokemon151.map(id => ({
             params: { id }
