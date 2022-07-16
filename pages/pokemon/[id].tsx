@@ -1,7 +1,6 @@
 import { Button, Card, Container, Grid, Text, Image } from "@nextui-org/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { pokeApi } from "../../api";
 import { Layout } from "../../components/layouts";
 import { Pokemon } from "../../interface";
@@ -9,6 +8,7 @@ import { Pokemon } from "../../interface";
 interface Props {
     pokemon: Pokemon
 }
+
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
     const router = useRouter();
 
