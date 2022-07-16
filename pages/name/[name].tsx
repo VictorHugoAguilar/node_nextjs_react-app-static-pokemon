@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useState } from "react";
 import { pokeApi } from "../../api";
 import { Layout } from "../../components/layouts";
-import { Pokemon } from "../../interface";
+import { Pokemon, PokemonListResponse } from "../../interface";
 import { localFavorites } from "../../utils";
 import confetti from 'canvas-confetti';
 
@@ -100,11 +100,11 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
 
 // create static routes 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-    const { data } = await proxiApi.get<PokemonListResonse>('/pokemon?limit=151');
-    const pokemonsName : string[] = data.results.map(pokemon => pokemon.getName);
-    
+    const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
+    const pokemonsName: string[] = data.results.map(pokemon => pokemon.name);
+
     return {
-        paths: pokemon151.map(name => ({
+        paths: pokemonsName.map(name => ({
             params: { name }
         })),
         fallback: false
@@ -113,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 // get pokemons by name from api
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const { id } = params as { name: string };
+    const { name } = params as { name: string };
     const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}/`);
 
     return {
