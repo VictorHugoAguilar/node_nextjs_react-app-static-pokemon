@@ -11,6 +11,7 @@ export const NoFavorites = () => {
     }}>
         <Text h1>No hay Favoritos</Text>
         <Image
+            alt={`logo api`}
             src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
             width={500}
             height={500}
