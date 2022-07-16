@@ -3,9 +3,9 @@ import { FC } from "react";
 import Head from "next/head";
 import { Navbar } from "../ui";
 
-interface Props  {
+interface Props {
     title?: string;
-    children: React.ReactNode; 
+    children: React.ReactNode;
 }
 
 export const Layout: FC<Props> = ({ children, title }) => {

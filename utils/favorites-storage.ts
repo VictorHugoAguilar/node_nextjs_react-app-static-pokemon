@@ -24,5 +24,9 @@ const existInFavorites = (id: number): boolean => {
     return favorites.includes(id);
 }
 
+const getFavorites = (): number[] => {
+    return JSON.parse(localStorage.getItem('favorites') || '[]');
+}
 
-export default { toogleFavorite, existInFavorites };
+
+export default { toogleFavorite, existInFavorites, getFavorites };

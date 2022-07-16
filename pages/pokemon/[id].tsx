@@ -6,6 +6,7 @@ import { pokeApi } from "../../api";
 import { Layout } from "../../components/layouts";
 import { Pokemon } from "../../interface";
 import { localFavorites } from "../../utils";
+import confetti from 'canvas-confetti';
 
 interface Props {
     pokemon: Pokemon
@@ -20,6 +21,23 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
         console.log('add new favorite from front, ', pokemon.id);
         localFavorites.toogleFavorite(pokemon.id);
         setIsInFavorite(!isInFavorite);
+
+        if (isInFavorite) {
+            return;
+        }
+
+        confetti({
+            zIndex: 999,
+            particleCount: 200,
+            spread: 160,
+            gravity: 1,
+            angle: -90,
+            origin: {
+                x: 1,
+                y: 0
+            }
+        })
+
     }
 
     return (
