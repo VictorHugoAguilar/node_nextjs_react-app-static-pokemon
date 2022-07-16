@@ -18,7 +18,6 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
     const [isInFavorite, setIsInFavorite] = useState(localFavorites.existInFavorites(pokemon.id));
 
     const toogleFavorite = () => {
-        console.log('add new favorite from front, ', pokemon.id);
         localFavorites.toogleFavorite(pokemon.id);
         setIsInFavorite(!isInFavorite);
 
