@@ -1,6 +1,5 @@
 import { Button, Card, Container, Grid, Text, Image } from "@nextui-org/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { pokeApi } from "../../api";
 import { Layout } from "../../components/layouts";
@@ -13,12 +12,9 @@ interface Props {
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
-    const router = useRouter();
-
     const [isInFavorite, setIsInFavorite] = useState(localFavorites.existInFavorites(pokemon.id));
 
     const toogleFavorite = () => {
-        console.log('add new favorite from front, ', pokemon.id);
         localFavorites.toogleFavorite(pokemon.id);
         setIsInFavorite(!isInFavorite);
 
