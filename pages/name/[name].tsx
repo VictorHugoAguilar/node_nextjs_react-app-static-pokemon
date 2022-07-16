@@ -98,6 +98,7 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
     )
 }
 
+// create static routes 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
     const { data } = await proxiApi.get<PokemonListResonse>('/pokemon?limit=151');
     const pokemonsName : string[] = data.results.map(pokemon => pokemon.getName);
@@ -110,6 +111,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     }
 }
 
+// get pokemons by name from api
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { id } = params as { name: string };
     const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}/`);
