@@ -1,10 +1,18 @@
-import { useTheme, Text, Spacer, Image, Link } from "@nextui-org/react";
-import { FC } from "react";
+import { useTheme, Text, Spacer, Image, Link, Input, useInput } from "@nextui-org/react";
+import { FC, useEffect } from "react";
 import NextLink from 'next/link';
+import React from "react";
 
 export const Navbar: FC = () => {
 
     const { theme } = useTheme();
+    const { value, reset, bindings } = useInput("");
+
+    useEffect(() => {
+        console.log('entrando en helpert')
+
+    }, [value]);
+
 
     return (
         <div style={{
@@ -37,13 +45,23 @@ export const Navbar: FC = () => {
 
             <Spacer css={{ flex: 1 }} />
 
+            <Input
+                {...bindings}
+                clearable
+                onClearClick={reset}
+                bordered
+                color="secondary"
+                label="Buscar pokémon"
+                id="search"
+            />
+
             <NextLink href='/favorites' passHref>
                 <Link block color="secondary">
-                    <Text  css={{
+                    <Text css={{
                         textGradient: "45deg, $purple600 -20%, $pink600 100%",
                     }}
-                    weight="bold"
-                    h4 >Favoritos  </Text>
+                        weight="bold"
+                        h4 >Favoritos  </Text>
                 </Link>
             </NextLink>
         </div>
