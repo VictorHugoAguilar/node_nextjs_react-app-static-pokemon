@@ -122,4 +122,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 }
 
+/**
+ * Crear lógica para buscar o almacenarlos en memoria y de ahi filtrar
+ */
+
 export default PokemonSearchPage;
