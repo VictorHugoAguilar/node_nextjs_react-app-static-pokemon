@@ -35,3 +35,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 # node_nextjs_react-app-static-pokemon
 
 Create database
+
+
+
+@Author: @VictorHugoAguilarAguilar
+@Co-Author: @VHAA1718
+
