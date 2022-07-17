@@ -126,4 +126,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
  * Crear lógica para buscar o almacenarlos en memoria y de ahi filtrar
  */
 
+/**
+ * Sacar fuera lógica repetida
+ */
+
 export default PokemonSearchPage;
