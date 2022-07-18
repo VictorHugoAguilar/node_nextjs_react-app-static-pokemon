@@ -1,12 +1,10 @@
 import { Button, Card, Container, Grid, Text, Image } from "@nextui-org/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useState } from "react";
-import { pokeApi } from "../../api";
 import { Layout } from "../../components/layouts";
 import { Pokemon } from "../../interface";
 import { getPokemonInfo, localFavorites } from "../../utils";
 import confetti from 'canvas-confetti';
-import { redirect } from "next/dist/server/api-utils";
 
 interface Props {
     pokemon: Pokemon
